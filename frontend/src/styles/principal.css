@@ -1,0 +1,26 @@
+.container {
+   display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.container input { 
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  width: 180px;
+  margin-top: 10px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container input:focus {
+  border-color: var(--border);
+  background-color: var(--input-bg);
+  outline: none;
+}
+
+.container button {
+    width: 150px;
+}

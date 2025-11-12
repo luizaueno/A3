@@ -1,0 +1,54 @@
+
+h1 {
+  color: var(--h1);
+  margin: 5px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+ justify-content: center;
+  min-width: 300px;
+}
+
+.input {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgb(0,0,0,0.2)
+}
+
+.input:focus {
+  outline: none;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border);
+}
+
+button {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgb(0, 0, 0, 0.4);
+  background-color: var(--button);
+  color: white;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #04043e;
+}
+
+.cadastro-link {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--button);
+  margin-top: 10px;
+ 
+}
+
+.cadastro-link:hover {
+   cursor: pointer;
+   text-decoration: underline;
+}

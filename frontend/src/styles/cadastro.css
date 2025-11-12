@@ -1,0 +1,20 @@
+
+.container h2 {
+    margin: 10px;
+    color: var(--h1);
+}
+
+.login-link {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--button);
+    margin-top: 10px;
+
+}
+
+.login-link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    
+}
+
