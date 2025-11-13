@@ -9,12 +9,16 @@
     text-decoration: none;
     color: var(--button);
     margin-top: 10px;
-
 }
 
 .login-link:hover {
     cursor: pointer;
-    text-decoration: underline;
-    
+    text-decoration: underline;   
 }
 
+.input-cadastro {
+    
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}

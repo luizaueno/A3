@@ -24,10 +24,18 @@ public class UsuarioController {
 
     @PostMapping
     public ResponseEntity<String> cadastrarUsuario(@RequestBody UsuarioDTO dto) {
-        if (!dto.getSenha().equals(dto.getConfirmarSenha())) {
-            return ResponseEntity.badRequest().body("As senhas não coincidem.");
+        if(dto.getNome() == null || dto.getNome().isBlank() ||
+          dto.getTelefone() == null || dto.getTelefone().isBlank() ||
+        dto.getEmail() == null || dto.getEmail().isBlank() ||
+        dto.getSenha() == null || dto.getSenha().isBlank() ||
+        dto.getConfirmarSenha() == null || dto.getConfirmarSenha().isBlank()) {
+        return ResponseEntity.badRequest().body("Campos obrigatórios não preenchidos");
         }
 
+        if (usuarioRepository.findByEmail(dto.getEmail()) != null) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body("E-mail já cadastrado.");
+        }
+            
         Usuario usuario = new Usuario();
         usuario.setNome(dto.getNome());
         usuario.setTelefone(dto.getTelefone());

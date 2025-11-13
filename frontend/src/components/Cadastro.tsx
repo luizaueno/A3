@@ -36,8 +36,8 @@ export default function Cadastro() {
         })
         .then(async response => {
   const text = await response.text(); // lê a resposta como texto
-  if (!response.ok) {
-    setMensagem(`Erro: ${text}`);
+  if (!response.ok || !text.trim()) {
+    setMensagem(`Erro: ${text || "Preencha os campos para cadastrar"}`);
     return;
   }
   setMensagem(`Cadastro realizado com sucesso!`);
@@ -50,11 +50,11 @@ export default function Cadastro() {
         <>
         <div className="container">
             <h2>Cadastre-se</h2>
-            <input className="input" type="text" placeholder="Nome" value={nome} onChange={e => setNome(e.target.value)} required/>
-            <input className="input" type="text" placeholder="Telefone com DDD" value={telefone} onChange={e => setTelefone(e.target.value)} required />
-            <input className="input" type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required/> 
-            <input className="input" type="password" placeholder="Senha" value={senha} onChange={e => setSenha(e.target.value)} required />
-            <input className="input" type="password" placeholder="Confirme sua Senha" value= {confirmarSenha} onChange={e => setConfirmarSenha(e.target.value)}  required />
+            <input className="input-cadastro" type="text" placeholder="Nome" value={nome} onChange={e => setNome(e.target.value)} required/>
+            <input className="input-cadastro" type="text" placeholder="Telefone com DDD" value={telefone} onChange={e => setTelefone(e.target.value)} required />
+            <input className="input-cadastro" type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required/> 
+            <input className="input-cadastro" type="password" placeholder="Senha" value={senha} onChange={e => setSenha(e.target.value)} required />
+            <input className="input-cadastro" type="password" placeholder="Confirme sua Senha" value= {confirmarSenha} onChange={e => setConfirmarSenha(e.target.value)}  required />
             {confirmarSenha && senha !== confirmarSenha && (
                 <p style={{ color: 'red' }}>As senhas são diferentes</p>
             )}

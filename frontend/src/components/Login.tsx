@@ -24,14 +24,16 @@ export default function Login() {
     body: JSON.stringify({email, senha})
   });
 
-  if (resposta.ok) {
-    const token = await resposta.text(); // lê o token da resposta
-    localStorage.setItem("token", token); // salva o token no navegador
-    setErro(""); // limpa a mensagem de erro
-    navigate("/principal"); // redireciona para a tela principal
-  } else {
-    setErro("Email ou senha inválidos"); // mostra o erro em vermelho
-  }
+ if (resposta.ok) {
+  const token = await resposta.text();
+  localStorage.setItem("token", token);
+  console.log(token)
+  setErro("");
+  navigate("/principal");
+} else {
+  const erro = await resposta.text(); // lê a mensagem do backend
+  setErro(erro); // exibe exatamente o que veio do backend
+}
   };
 
   return(
@@ -39,9 +41,9 @@ export default function Login() {
     <div className="container">
       <h1>Bem vindo!</h1>
 
-      <input className="input" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required/> 
+      <input className="input-login" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required/> 
 
-      <input className="input" type="password" placeholder="Senha" value={senha
+      <input className="input-login" type="password" placeholder="Senha" value={senha
       } onChange={(e) => setSenha(e.target.value)}  required />
 
       <button id="botao" onClick={handleLogin}>Entrar</button>

@@ -11,7 +11,7 @@ h1 {
   min-width: 300px;
 }
 
-.input {
+.input-login {
   margin: 10px;
   padding: 10px;
   border: 1px solid var(--border);
@@ -19,7 +19,7 @@ h1 {
   box-shadow: 2px 2px 2px rgb(0,0,0,0.2)
 }
 
-.input:focus {
+.input-login:focus {
   outline: none;
   background-color: var(--input-bg);
   border: 1px solid var(--border);

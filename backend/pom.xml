@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example.a3</groupId>
 
-    <artifactId>a3</artifactId>
+    <artifactId>usuario-service</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Projeto A3</name>
+    <name>usuario-service</name>
     <description>Projeto de autenticação com Spring Boot</description>
 
     <parent>
