@@ -16,7 +16,7 @@ public class SecurityConfig {
         .cors(Customizer.withDefaults())
         .csrf(csrf -> csrf.disable()) // desativa CSRF para testes
         .authorizeHttpRequests(auth -> auth
-        .requestMatchers("/login", "/usuarios", "/usuarios/publico/**").permitAll()
+        .requestMatchers( "/usuarios/**").permitAll()
         .anyRequest().authenticated())
         .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 

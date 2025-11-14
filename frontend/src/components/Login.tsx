@@ -20,14 +20,15 @@ export default function Login() {
 
   const resposta = await fetch("http://localhost:8080/login", {
     method:"POST",
-    headers: {"Content-Type": "application/json"},
+    headers: {"Content-Type": "application/json",
+    },
     body: JSON.stringify({email, senha})
   });
 
  if (resposta.ok) {
-  const token = await resposta.text();
-  localStorage.setItem("token", token);
-  console.log(token)
+  const data = await resposta.json();
+  localStorage.setItem("token", data.token);
+  console.log(data.token)
   setErro("");
   navigate("/principal");
 } else {

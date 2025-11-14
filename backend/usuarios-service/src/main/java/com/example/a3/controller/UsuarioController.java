@@ -22,6 +22,13 @@ public class UsuarioController {
         this.usuarioRepository = usuarioRepository;
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarPorId(@PathVariable Long id) {
+        return usuarioRepository.findById(id)
+            .map(usuario -> ResponseEntity.ok(usuario))
+            .orElse(ResponseEntity.notFound().build());
+    }
+
     @PostMapping
     public ResponseEntity<String> cadastrarUsuario(@RequestBody UsuarioDTO dto) {
         if(dto.getNome() == null || dto.getNome().isBlank() ||

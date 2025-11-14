@@ -1,6 +1,7 @@
 package com.example.a3.controller;
 
 import com.example.a3.dto.LoginDTO;
+import com.example.a3.dto.TokenDTO;
 import com.example.a3.model.Usuario;
 import com.example.a3.repository.UsuarioRepository;
 import com.example.a3.service.TokenService;
@@ -32,7 +33,7 @@ public class AuthController {
 
         if (usuario != null && encoder.matches(login.getSenha(), usuario.getSenha())) {
             String token = tokenService.gerarToken(usuario.getEmail());
-            return ResponseEntity.ok(token);
+            return ResponseEntity.ok(new TokenDTO(token));
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login inválido.");
         }
