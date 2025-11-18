@@ -35,6 +35,8 @@ public class Denuncia {
     @Column(columnDefinition = "TEXT")
     private String evidencias;
 
+    private String resposta;
+
     // Getters e Setters
 
     public Long getId() {
@@ -91,5 +93,13 @@ public class Denuncia {
 
     public void setEvidencias(String evidencias) {
         this.evidencias = evidencias;
+    }
+
+    public String getResposta() {
+    return resposta;
+}
+
+    public void setResposta(String resposta) {
+        this.resposta = resposta;
     }
 }
