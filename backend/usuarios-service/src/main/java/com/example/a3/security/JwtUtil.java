@@ -1,23 +1,42 @@
 package com.example.a3.security;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import jakarta.annotation.PostConstruct;
+import java.security.Key;
 import java.util.Date;
+
+
 
 @Component
 public class JwtUtil {
 
-    private final String SECRET_KEY = "minha-chave-secreta"; // use uma chave forte e segura
+    @Value("${jwt.expiration}")
+    private long expiration;
+
+    @Value("${jwt.secret}")
+    private String SECRET_KEY;
+
+    private Key key;
+
+    @PostConstruct
+    public void init() {
+        // inicializa a chave a partir da string configurada
+        key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
+    }
 
     public String extractUsername(String token) {
-        return extractAllClaims(token).getSubject(); // subject = email
+        return extractAllClaims(token).getSubject();
     }
 
     public boolean validateToken(String token) {
         try {
-            extractAllClaims(token); // se não lançar exceção, é válido
+            extractAllClaims(token);
             return true;
         } catch (Exception e) {
             return false;
@@ -25,18 +44,19 @@ public class JwtUtil {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser()
-                   .setSigningKey(SECRET_KEY)
+        return Jwts.parserBuilder()
+                   .setSigningKey(key)
+                   .build()
                    .parseClaimsJws(token)
                    .getBody();
     }
 
     public String generateToken(String email) {
-        return Jwts.builder()
-                   .setSubject(email)
-                   .setIssuedAt(new Date(System.currentTimeMillis()))
-                   .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10h
-                   .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
-                   .compact();
-    }
+    return Jwts.builder()
+               .setSubject(email)
+               .setIssuedAt(new Date(System.currentTimeMillis()))
+               .setExpiration(new Date(System.currentTimeMillis() + expiration)) // usa o valor do properties
+               .signWith(key, SignatureAlgorithm.HS256)
+               .compact();
+}
 }

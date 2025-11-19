@@ -1,5 +1,7 @@
 package com.denuncias.denuncias_service.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import com.denuncias.denuncias_service.model.Denuncia;
 import com.denuncias.denuncias_service.repository.DenunciaRepository;
@@ -16,8 +18,22 @@ public class DenunciaService {
     }
 
     public Denuncia salvar(Denuncia denuncia) {
-        usuarioClient.usuarioExiste(denuncia.getUsuarioId());
+
+     System.out.println("📝 [Service] Salvando denúncia: " + denuncia);
+      //  usuarioClient.usuarioExiste(denuncia.getUsuarioId());
         return denunciaRepository.save(denuncia);
+    }
+
+    public boolean existePorChavePix(String chavePix) {
+
+        System.out.println("🔎 [Service] Verificando chavePix: " + chavePix);
+        return denunciaRepository.existsByChavePix(chavePix);
+    }
+
+    public List<Denuncia> buscarPorUsuario(Long usuarioId) {
+        
+    System.out.println("📄 [Service] Buscando denúncias do usuário ID: " + usuarioId);
+    return denunciaRepository.findByUsuarioId(usuarioId);
     }
 }
 

@@ -21,7 +21,7 @@ export default function Cadastro() {
             setMensagem("As senhas são diferentes")
             return;
         }
-        fetch("http://localhost:8080/usuarios", {
+        fetch("http://localhost:8080/usuarios/cadastro", {
             method: "POST",
             headers: {
             "Content-Type": "application/json"

@@ -18,6 +18,10 @@ public class Denuncia {
     private Long usuarioId;
 
     @NotBlank
+    @Column(columnDefinition = "VARCHAR(100)")
+    private String chavePix;
+
+    @NotBlank
     @Column(columnDefinition = "TEXT")
     private String descricao;
 
@@ -53,6 +57,14 @@ public class Denuncia {
 
     public void setUsuarioId(Long usuarioId) {
         this.usuarioId = usuarioId;
+    }
+
+     public String getChavePix() {
+        return chavePix;
+    }
+
+    public void setChavePix(String chavePix) {
+        this.chavePix = chavePix;
     }
 
     public String getDescricao() {

@@ -1,4 +1,3 @@
-// Sidebar.tsx
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "../styles/sidebar.css";
@@ -21,7 +20,6 @@ export default function Sidebar() {
       <div className={`sidebar ${aberta ? "aberta" : ""}`}>
         <nav>
           <ul>
-            
             <li onClick={() => navigate("/perfil")}>Perfil</li>
             <li onClick={handleLogout}>Sair</li>
           </ul>

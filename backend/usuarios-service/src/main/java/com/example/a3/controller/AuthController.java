@@ -8,32 +8,31 @@ import com.example.a3.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/auth")
+@CrossOrigin(origins = "http://localhost:5173")
 public class AuthController {
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
+    private final UsuarioRepository usuarioRepository;
+    private final TokenService tokenService;
+    private final PasswordEncoder encoder;
 
-    @Autowired
-    private TokenService tokenService;
+    public AuthController(UsuarioRepository usuarioRepository, TokenService tokenService, PasswordEncoder encoder) {
+        this.usuarioRepository = usuarioRepository;
+        this.tokenService = tokenService;
+        this.encoder = encoder;
+    }
 
-    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-
-    @CrossOrigin(origins = "http://localhost:5173") //  libera acesso do front-end
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDTO login) {
-        if (login.getEmail() == null || login.getEmail().isBlank() ||
-            login.getSenha() == null || login.getSenha().isBlank()) {
-            return ResponseEntity.badRequest().body("Preencha email e senha.");
-        }
-
         Usuario usuario = usuarioRepository.findByEmail(login.getEmail());
 
         if (usuario != null && encoder.matches(login.getSenha(), usuario.getSenha())) {
             String token = tokenService.gerarToken(usuario.getEmail());
-            return ResponseEntity.ok(new TokenDTO(token));
+            return ResponseEntity.ok(new TokenDTO(token, usuario.getEmail(), usuario.getNome()));
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login inválido.");
         }
