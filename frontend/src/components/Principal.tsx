@@ -31,17 +31,19 @@ export default function Principal() {
 
     try {
       const res = await apiAdmin.get(`/denuncias/chave/${chavePix}`);
-      if (res.data) {
-        setDenunciaExistente(res.data);
-        setMostrarFormulario(false);
-        setResultado("⚠️ Essa chave já possui uma denúncia.");
+      const msg = res.data;
+
+      setDenunciaExistente(msg.includes("Denúncia encontrada"));
+      setMostrarFormulario(true);
+
+      if (msg.includes("Denúncia encontrada")) {
+        setResultado("⚠️ Essa chave já possui uma denúncia. Você pode adicionar uma.");
       } else {
-        setDenunciaExistente(null);
-        setMostrarFormulario(true);
+       
         setResultado("✅ Nenhuma denúncia encontrada. Você pode adicionar uma.");
       }
     } catch {
-      setDenunciaExistente(null);
+      setDenunciaExistente(false);
       setMostrarFormulario(true);
       setResultado("✅ Nenhuma denúncia encontrada. Você pode adicionar uma.");
     }
@@ -80,7 +82,7 @@ export default function Principal() {
     <div className="principal">
       <Sidebar />
       <div className="container">
-        <h1>Bem-vinda, {usuario?.nome}!</h1>
+        <h1>Olá, {usuario?.nome}!</h1>
 
         <input
           type="text"

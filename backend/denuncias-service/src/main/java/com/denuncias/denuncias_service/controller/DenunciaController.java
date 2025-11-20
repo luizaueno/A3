@@ -30,7 +30,7 @@ public class DenunciaController {
         }
     }
 
-    @GetMapping("/{chavePix}")
+    @GetMapping("/chave/{chavePix}")
     public ResponseEntity<?> verificarDenuncia(@PathVariable String chavePix) {
         System.out.println("🔍 [GET] Verificando chavePix: " + chavePix);
         boolean existe = denunciaService.existePorChavePix(chavePix);
@@ -43,20 +43,38 @@ public class DenunciaController {
 
    
     @GetMapping("/usuario/{id}")
-public ResponseEntity<?> listarPorUsuario(@PathVariable Long id) {
+    public ResponseEntity<?> listarPorUsuario(@PathVariable Long id) {
      System.out.println("📄 [GET] Listando denúncias do usuário ID: " + id);
+        try {
+            List<Denuncia> denuncias = denunciaService.buscarPorUsuario(id);
+            return ResponseEntity.ok(denuncias);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                .body("Erro ao buscar denúncias: " + e.getMessage());
+        }
+    }
+
+   
+    @GetMapping
+    public ResponseEntity<?> listarTodas() {
+        System.out.println("📋 [GET] Listando todas as denúncias");
     try {
-        List<Denuncia> denuncias = denunciaService.buscarPorUsuario(id);
-        return ResponseEntity.ok(denuncias);
+        List<Denuncia> todas = denunciaService.listarTodas();
+        return ResponseEntity.ok(todas);
     } catch (Exception e) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                             .body("Erro ao buscar denúncias: " + e.getMessage());
+                            .body("Erro ao listar denúncias: " + e.getMessage());
     }
     }
 
-    @GetMapping("/teste")
-public ResponseEntity<String> teste() {
-    System.out.println("✅ [GET] Endpoint de teste acessado!");
-    return ResponseEntity.ok("Funcionando!");
-}
+    @PutMapping("/{id}")
+    public ResponseEntity<?> atualizarDenuncia(@PathVariable Long id, @RequestBody Denuncia atualizada) {
+    System.out.println("✏️ [PUT] Atualizando denúncia ID: " + id);
+        try {
+            Denuncia atualizadaFinal = denunciaService.atualizar(id, atualizada);
+            return ResponseEntity.ok(atualizadaFinal);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Erro: " + e.getMessage());
+        }
+    }
 }

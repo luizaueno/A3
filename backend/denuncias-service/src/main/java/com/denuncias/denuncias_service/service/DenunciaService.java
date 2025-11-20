@@ -31,9 +31,22 @@ public class DenunciaService {
     }
 
     public List<Denuncia> buscarPorUsuario(Long usuarioId) {
-        
     System.out.println("📄 [Service] Buscando denúncias do usuário ID: " + usuarioId);
     return denunciaRepository.findByUsuarioId(usuarioId);
+    }
+
+    public List<Denuncia> listarTodas() {
+    return denunciaRepository.findAll();
+    }
+
+    public Denuncia atualizar(Long id, Denuncia atualizada) {
+    Denuncia existente = denunciaRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Denúncia não encontrada"));
+
+    existente.setStatus(atualizada.getStatus());
+    existente.setResposta(atualizada.getResposta());
+
+    return denunciaRepository.save(existente);
     }
 }
 

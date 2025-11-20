@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import '../styles/login.css';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -64,6 +65,9 @@ export default function Login() {
       <button id="botao" onClick={handleLogin}>Entrar</button>
       {erro && <p style={{ color: "red" }}>{erro}</p>}
       <span onClick={irParaCadastro} className="cadastro-link">Crie uma conta</span>
+      <p className="admin-link"> É administrador? <Link to="/admin/login">Acesse aqui</Link> </p>
     </div>
+
+    
   );
 }

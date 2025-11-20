@@ -7,8 +7,15 @@ h1 {
 .container {
   display: flex;
   flex-direction: column;
- justify-content: center;
-  min-width: 500px;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .input-login {
@@ -46,11 +53,27 @@ button:hover {
   display: inline-block;
   text-decoration: none;
   color: var(--button);
-  margin-top: 10px;
+  margin-top: 5px;
  
 }
 
 .cadastro-link:hover {
    cursor: pointer;
    text-decoration: underline;
+}
+
+.admin-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--button);
+}
+
+.admin-link a {
+  text-decoration: none;
+  color: var(--button);
+}
+
+.admin-link a:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
