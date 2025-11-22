@@ -1,73 +1,61 @@
-# React + TypeScript + Vite
+# 📖 Nome do Projeto
+Esse projeto é voltado para vítimas de um golpe de pix. A intenção é que após cair no golpe, a pessoa acesse o site para denunciar a chave pix, relatando uma breve descrição e com a opção de adicionar evidências.
+O sistema também conta com um painel administrativo para que responsáveis possam visualizar, responder e atualizar o status das denúncias.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## 🧰 Tecnologias utilizadas
+React com TypeScript
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Java 21,  Maven, Spring Boot (Java) no backend
 
-## React Compiler
+Axios para comunicação entre frontend e backend
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+MySQL como banco de dados
 
-## Expanding the ESLint configuration
+CSS para estilização
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Vite 
+## 🚀 Funcionalidades
+Cadastro de denúncias com chave Pix, descrição e evidências
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Verificação de chave Pix antes do envio
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Painel administrativo com listagem de denúncias
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+ Resposta e atualização de status da denúncia (Recusada, Em andamento, Resolvida)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+ Login e logout de administradores
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+ Feedback visual com mensagens de confirmação
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Controle de sessão via localStorage
+
+## 📦 Instruções de uso
+Clone o repositório: `git clone https://github.com/luizaueno/A3.git`
+Acesse a pasta do frontend e instale as dependências: cd frontend && npm install
+Inicie o frontend: npm run dev
+Acesse a pasta do backend e inicie o servidor Spring Boot: cd backend && ./mvnw spring-boot:run ou via sua IDE
+Acesse no navegador:
+
+Frontend: http://localhost:5173
+
+Backend: http://localhost:8080 e http://localhost:8081
+
+## 🛡️ Licença
+Este projeto está sob a licença MIT.
+Veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
+
+## 🏷️ Badges
+
+
+## 🤝 Contribuição
+Contribuições são bem-vindas! Para colaborar:
+
+1. Faça um **fork** do repositório
+2. Crie uma **branch** com sua melhoria (`git checkout -b minha-feature`)
+3. Faça commits com mensagens claras
+4. Envie um **pull request** explicando suas alterações
+
+## 👥 Contribuidores
+
+>>>>>>> 7d742ef06c1cc8320ef16209de60cf124ff09c9b

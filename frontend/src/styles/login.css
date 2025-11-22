@@ -1,0 +1,79 @@
+
+h1 {
+  color: var(--h1);
+  margin: 5px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.input-login {
+  margin: 10px;
+  padding: 10px;
+  min-width: 30px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgb(0,0,0,0.2)
+}
+
+.input-login:focus {
+  outline: none;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border);
+}
+
+button {
+  margin: 10px;
+  padding: 10px;
+  min-width: 90px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgb(0, 0, 0, 0.4);
+  background-color: var(--button);
+  color: white;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #04043e;
+}
+
+.cadastro-link {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--button);
+  margin-top: 5px;
+ 
+}
+
+.cadastro-link:hover {
+   cursor: pointer;
+   text-decoration: underline;
+}
+
+.admin-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--button);
+}
+
+.admin-link a {
+  text-decoration: none;
+  color: var(--button);
+}
+
+.admin-link a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
