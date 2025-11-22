@@ -1,0 +1,105 @@
+.perfil-info-row {
+  display: block;
+  margin-bottom: 16px;
+}
+/* Espaçamento entre nome, email e telefone no perfil */
+.perfil h2 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+.info-perfil {
+  margin-bottom: 8px;
+  font-size: 16px;
+  text-align: left;
+  margin-right: 0;
+}
+
+.perfil {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: none;
+}
+
+.avatar img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.buscar {
+  margin-top: 12px;
+  background: none;
+  border: none;
+  color: #0077cc;
+  font-size: 14px;
+  box-shadow: none;
+}
+
+.buscar:hover {
+    background: none;
+    text-decoration: underline;
+}
+
+.link {
+    text-decoration: none;
+    color: #0077cc;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.lista-denuncias {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.lista-denuncias li {
+    overflow-wrap: break-word;
+  background-color: #f9f9f9;
+  border-left: 5px solid var(--border);
+  margin-bottom: 15px;
+    padding: 18px 12px 14px 18px;
+    border-radius: 4px;
+  box-shadow: none;
+  width: 340px;
+  max-width: 340px;
+  min-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lista-denuncias li p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.lista-denuncias li p strong {
+  color: black;
+}
+
+.lista-denuncias li .status {
+  font-weight: bold;
+  color: orange;
+}
+
+.lista-denuncias li .status.resolvida {
+  color: green;
+}
+
+.lista-denuncias li .status.recusada {
+  color: red;
+}
+
+.lista-denuncias li .status.em_andamento {
+  color: orange;
+}
